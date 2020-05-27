@@ -106,8 +106,8 @@
   @include bmd-flat-button-variant($bmd-btn-color);
 
   // flat bg with text color variations
-  &.btn-primary {
-    @include bmd-flat-button-variant($btn-primary-bg);
+  &.btn-info {
+    @include bmd-flat-button-variant($btn-info-bg);
   }
   &.btn-secondary {
     @include bmd-flat-button-variant($btn-secondary-color);
@@ -128,7 +128,7 @@
 
 @mixin bmd-outline-button-color() {
   &.btn-outline,
-  &.btn-outline-primary,
+  &.btn-outline-info,
   &.btn-outline-secondary,
   &.btn-outline-info,
   &.btn-outline-success,
@@ -143,8 +143,8 @@
   &.btn-outline {
     @include bmd-flat-button-variant($bmd-btn-color, $bmd-btn-color, $bmd-btn-color, $bmd-btn-color);
   }
-  &.btn-outline-primary {
-    @include bmd-flat-button-variant($btn-primary-bg, $btn-primary-bg, $btn-primary-bg, $btn-primary-bg);
+  &.btn-outline-info {
+    @include bmd-flat-button-variant($btn-info-bg, $btn-info-bg, $btn-info-bg, $btn-info-bg);
   }
   &.btn-outline-secondary {
     @include bmd-flat-button-variant($btn-secondary-color, $btn-secondary-color, $btn-secondary-color, $btn-secondary-color);
@@ -210,8 +210,8 @@
 }
 
 @mixin bmd-raised-button-color() {
-  &.btn-primary {
-    @include bmd-raised-button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border-color);
+  &.btn-info {
+    @include bmd-raised-button-variant($btn-info-color, $btn-info-bg, $btn-info-border-color);
   }
   &.btn-secondary {
     @include bmd-raised-button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border-color);

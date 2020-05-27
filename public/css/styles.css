@@ -1,0 +1,26 @@
+@font-face {
+  font-family: MichromaRegular;
+  src: url("/fonts/Michroma-Regular.ttf");
+}
+
+.sidebar .logo p {
+  color: black !important;
+  font-size: 1rem;
+  margin: 0 10px;
+  font-weight: bold !important;
+  font-family: "MichromaRegular";
+}
+
+.logo-normal {
+  display: flex !important;
+  padding: 0 20px !important;
+}
+
+.MichromaRegular {
+  font-family: MichromaRegular;
+}
+
+.sidebar-mini {
+  margin-left: 20px !important;
+}
+

@@ -147,7 +147,7 @@
   }
 
   .form-check-input[disabled] + .form-check-sign .check:after {
-    background-color: $mdb-text-color-primary;
+    background-color: $mdb-text-color-info;
     transform: rotate(-45deg);
   }
 

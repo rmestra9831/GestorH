@@ -54,8 +54,8 @@
   // colors
   @include bmd-tabs-color($bmd-nav-tabs-color, $bmd-nav-tabs-active-color, $bmd-nav-tabs-active-border-color, $bmd-nav-tabs-disabled-link-color, $bmd-nav-tabs-disabled-link-color-hover);
 
-  &.header-primary {
-    @include bmd-tabs-color($bmd-nav-tabs-primary-color, $bmd-nav-tabs-primary-active-color, $bmd-nav-tabs-primary-active-border-color, $bmd-nav-tabs-primary-disabled-link-color, $bmd-nav-tabs-primary-disabled-link-color-hover);
+  &.header-info {
+    @include bmd-tabs-color($bmd-nav-tabs-info-color, $bmd-nav-tabs-info-active-color, $bmd-nav-tabs-info-active-border-color, $bmd-nav-tabs-info-disabled-link-color, $bmd-nav-tabs-info-disabled-link-color-hover);
   }
 
   &.bg-inverse {

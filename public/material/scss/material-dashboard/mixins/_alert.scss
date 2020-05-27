@@ -1,4 +1,4 @@
-// alert-variations("", $brand-primary)
+// alert-variations("", $brand-info)
 @mixin alert-variations($component, $selector-suffix, $brand-default) {
   @include generic-variations($component, $selector-suffix, $brand-default, "alert-variations-content", null);
 }
@@ -77,12 +77,12 @@
     ));
     @include call-variations-content-mixin($args-inverse);
   }
-  &#{$component}-primary#{$selector-suffix} {
-    $args-primary: map-merge($args, (
-            variation-color: $brand-primary,
+  &#{$component}-info#{$selector-suffix} {
+    $args-info: map-merge($args, (
+            variation-color: $brand-info,
             variation-color-text: $mdb-text-color-light
     ));
-    @include call-variations-content-mixin($args-primary);
+    @include call-variations-content-mixin($args-info);
   }
   &#{$component}-success#{$selector-suffix} {
     $args-success: map-merge($args, (

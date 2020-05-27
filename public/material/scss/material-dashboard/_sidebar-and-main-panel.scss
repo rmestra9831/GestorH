@@ -293,7 +293,7 @@
     }
 
     &[data-color="purple"]{
-        @include set-background-color-button($brand-primary);
+        @include set-background-color-button($brand-info);
     }
     &[data-color="azure"]{
         @include set-background-color-button($brand-info);

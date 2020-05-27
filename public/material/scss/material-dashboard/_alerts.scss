@@ -19,7 +19,7 @@
 
     &-default {
         a, .alert-link {
-            color: $mdb-text-color-primary;
+            color: $mdb-text-color-info;
         }
     }
 
@@ -44,9 +44,9 @@
         @include shadow-alert-color($brand-info);
         @include alert-icon-color($brand-info);
     }
-    &.alert-primary{
-        @include shadow-alert-color($brand-primary);
-        @include alert-icon-color($brand-primary);
+    &.alert-info{
+        @include shadow-alert-color($brand-info);
+        @include alert-icon-color($brand-info);
     }
     &.alert-rose{
         @include shadow-alert-color($brand-rose);

@@ -5,77 +5,118 @@
       Tip 2: you can also add an image using data-image tag
   -->
   <div class="logo">
-    <a href="https://creative-tim.com/" class="simple-text logo-normal">
-      {{ __('Creative Tim') }}
+    <a href="{{ route('home') }}" class="simple-text logo-normal justify-content-center">
+      <img class="w-25" src="{{ asset('images/calendar.png') }}" alt="">
+      <p class="titleLogo d-flex align-self-center text-justify">Gestor De <br> horarios</p>
     </a>
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
       <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('home') }}">
+        <a class="nav-link MichromaRegular" href="{{ route('home') }}">
           <i class="material-icons">dashboard</i>
             <p>{{ __('Dashboard') }}</p>
         </a>
       </li>
-      <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
-        <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
-          <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
-          <p>{{ __('Laravel Examples') }}
-            <b class="caret"></b>
-          </p>
-        </a>
-        <div class="collapse show" id="laravelExample">
-          <ul class="nav">
-            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('profile.edit') }}">
-                <span class="sidebar-mini"> UP </span>
-                <span class="sidebar-normal">{{ __('User profile') }} </span>
-              </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('user.index') }}">
-                <span class="sidebar-mini"> UM </span>
-                <span class="sidebar-normal"> {{ __('User Management') }} </span>
-              </a>
-            </li>
-          </ul>
+      {{-- horarios --}}
+      @can('schedules', Model::class)
+        <li class="nav-item {{ ($activePage == 'permissionsUser') ? ' active' : '' }}">
+          <a class="nav-link collapsed" data-toggle="collapse" href="#schedule" aria-expanded="false">
+            <i class="material-icons">calendar_view_day</i>
+            <p class="MichromaRegular">{{ __('Horarios') }}
+              <b class="caret"></b>
+            </p>
+          </a>
+          <div class="collapse {{ ($activePage ==   'permissionsUser') ? ' show' : '' }}" id="schedule">
+            <ul class="nav">
+              <li class="nav-item{{ $activePage == 'permissionsUser' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('permissionsUser.view') }}">
+                  <span class="sidebar-mini"> LT </span>
+                  <span class="sidebar-normal MichromaRegular">{{ __('lista') }} </span>
+                </a> 
+              </li>
+              @can('create schedule')
+                <li class="nav-item{{ $activePage == 'schedule' ? ' active' : '' }}">
+                  <a class="nav-link" href="{{ route('profile.edit') }}">
+                    <span class="sidebar-mini"> CH </span>
+                    <span class="sidebar-normal MichromaRegular">{{ __('Crear Horario') }} </span>
+                  </a> 
+                </li>
+              @endcan
+            </ul>
+          </div>
+        </li>
+      @endcan
+      {{-- dropdown --}}
+      @hasrole('admin')
+        <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
+          <a class="nav-link collapsed" data-toggle="collapse" href="#laravelExample" aria-expanded="false">
+            <i class="material-icons">mood</i>
+            <p class="MichromaRegular">{{ __('Usuarios') }}
+              <b class="caret"></b>
+            </p>
+          </a>
+          <div class="collapse {{ ($activePage == 'profile' || $activePage == 'user-management' || $activePage == 'register') ? ' show' : '' }}" id="laravelExample">
+            <ul class="nav">
+              <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('profile.edit') }}">
+                  <span class="sidebar-mini"> MP </span>
+                  <span class="sidebar-normal MichromaRegular">{{ __('Mi Perfil') }} </span>
+                </a> 
+              </li>
+              @can('create user')
+                <li class="nav-item{{ $activePage == 'register' ? ' active' : '' }}">
+                  <a class="nav-link" href="{{ route('register') }}">
+                    <span class="sidebar-mini"> NU </span>
+                    <span class="sidebar-normal MichromaRegular"> {{ __('Nuevo Usuario') }} </span>
+                  </a>
+                </li>
+              @endcan
+              @can('edit user')
+                <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
+                  <a class="nav-link" href="{{ route('user.index') }}">
+                    <span class="sidebar-mini"> US </span>
+                    <span class="sidebar-normal MichromaRegular"> {{ __('Usuarios') }} </span>
+                  </a>
+                </li>
+              @endcan
+            </ul>
+          </div>
+        </li>
+      @endhasrole
+      @can('permissions', Model::class)
+        <li class="nav-item {{ ($activePage == 'permissionsUser') ? ' active' : '' }}">
+          <a class="nav-link collapsed" data-toggle="collapse" href="#permissions" aria-expanded="false">
+            <i class="material-icons">assignment</i>
+            <p class="MichromaRegular">{{ __('Permisos') }}
+              <b class="caret"></b>
+            </p>
+          </a>
+          <div class="collapse {{ ($activePage ==   'permissionsUser') ? ' show' : '' }}" id="permissions">
+            <ul class="nav">
+              <li class="nav-item{{ $activePage == 'permissionsUser' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('permissionsUser.view') }}">
+                  <span class="sidebar-mini"> LT </span>
+                  <span class="sidebar-normal MichromaRegular">{{ __('Lista') }} </span>
+                </a> 
+              </li>
+              @can('assign permissions')
+                <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
+                  <a class="nav-link" href="{{ route('profile.edit') }}">
+                    <span class="sidebar-mini"> AS </span>
+                    <span class="sidebar-normal MichromaRegular">{{ __('Asignar') }} </span>
+                  </a> 
+                </li>
+              @endcan
+            </ul>
+          </div>
+        </li>
+      @endcan
+      {{-- pie de pagina --}}
+      <li class="nav-item active-pro bg-info">
+        <div class="nav-link text-white">
+          <p class="MichromaRegular text-center">@role('admin') Administrador @else @if('teacher') Docente @else Estudiante @endrole @endrole</p>
         </div>
-      </li>
-      <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('table') }}">
-          <i class="material-icons">content_paste</i>
-            <p>{{ __('Table List') }}</p>
-        </a>
-      </li>
-      <li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('typography') }}">
-          <i class="material-icons">library_books</i>
-            <p>{{ __('Typography') }}</p>
-        </a>
-      </li>
-      <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('icons') }}">
-          <i class="material-icons">bubble_chart</i>
-          <p>{{ __('Icons') }}</p>
-        </a>
-      </li>
-      <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('map') }}">
-          <i class="material-icons">location_ons</i>
-            <p>{{ __('Maps') }}</p>
-        </a>
-      </li>
-      <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('notifications') }}">
-          <i class="material-icons">notifications</i>
-          <p>{{ __('Notifications') }}</p>
-        </a>
-      </li>
-      <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('language') }}">
-          <i class="material-icons">language</i>
-          <p>{{ __('RTL Support') }}</p>
-        </a>
       </li>
     </ul>
   </div>

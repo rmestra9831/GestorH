@@ -17,10 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Auth::routes();
+Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
-Auth::routes();
+// Auth::routes();
+
+Route::get('/', function () {
+	if (Auth::check()) {
+			return redirect('home');
+	}else{
+			return view('auth.login');
+	}
+});
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
@@ -60,4 +68,3 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 });
-

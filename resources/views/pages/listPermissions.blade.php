@@ -1,4 +1,4 @@
-@extends('layouts.app',['activePage' => 'user-management', 'titlePage' => __('Perfil de Usuarios'),'title'=>'asd'])
+@extends('layouts.app',['activePage' => 'permissionsUser', 'titlePage' => __('Perfil de Usuarios'),'title'=>'asd'])
 @section('title',' | Usuarios')
 
 @section('content')
@@ -30,7 +30,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($users as $user)
+                    {{-- @foreach ($users as $user)
                       <tr>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
@@ -55,7 +55,7 @@
                         @endcan
                         </td>
                       </tr>
-                    @endforeach
+                    @endforeach --}}
                   </tbody>
                 </table>
               </div>

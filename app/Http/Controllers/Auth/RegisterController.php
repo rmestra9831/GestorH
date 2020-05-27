@@ -8,6 +8,10 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Response;
 
 class RegisterController extends Controller
 {
@@ -22,8 +26,8 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
-
+    // use RegistersUsers;
+    
     /**
      * Where to redirect users after registration.
      *
@@ -38,7 +42,11 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
+    }
+    public function showRegistrationForm()
+    {   
+        return view('auth.register');
     }
 
     /**
@@ -52,10 +60,26 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:3', 'confirmed'],
         ]);
     }
+    public function register(Request $request)
+    {
+        // dd($request);
+        $this->validator($request->all())->validate();
 
+        event(new Registered($user = $this->create($request->all())));
+
+        return redirect()->route('register')->with('status','Usuario Registrado Correctamente');
+    }
+    protected function guard()
+    {
+        return Auth::guard();
+    }
+    protected function registered(Request $request, $user)
+    {
+
+    }
     /**
      * Create a new user instance after a valid registration.
      *
@@ -64,10 +88,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // dd($data);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'slug' => $data['name'].now()."",
             'password' => Hash::make($data['password']),
         ]);
+        
     }
+
 }

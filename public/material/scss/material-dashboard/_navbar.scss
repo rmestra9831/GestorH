@@ -127,8 +127,8 @@
         flex: 1;
     }
 
-    &.bg-primary{
-        @include navbar-colors($bg-primary, $white-color);
+    &.bg-info{
+        @include navbar-colors($bg-info, $white-color);
     }
     &.bg-info{
         @include navbar-colors($bg-info, $white-color);

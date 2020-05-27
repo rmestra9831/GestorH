@@ -65,7 +65,7 @@
 @mixin create-colored-badges(){
 
     &.primary-badge{
-        @include badges-color($brand-primary);
+        @include badges-color($brand-info);
     }
     &.info-badge {
         @include badges-color($brand-info);
@@ -85,8 +85,8 @@
 }
 
 @mixin badge-color() {
-    &.badge-primary{
-        background-color: $brand-primary;
+    &.badge-info{
+        background-color: $brand-info;
     }
     &.badge-info {
         background-color: $brand-info;
