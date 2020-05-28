@@ -83,3 +83,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - npm install
 - php artisan key:generate
 - php artisan migrate --seed ("RECUERDEN CONFIGURAR LA BD EN EL ARCHIVO .env, si no lo hacen no les corre el comando")
+- composer require yajra/laravel-datatables-oracle
+- npm install fomantic-ui

@@ -1,5 +1,5 @@
-@extends('layouts.app',['activePage' => 'user-management', 'titlePage' => __('Perfil de Usuarios'),'title'=>'asd'])
-@section('title',' | Usuarios')
+@extends('layouts.app',['activePage' => 'user-management', 'titlePage' => __('Usuarios'),'title'=>'asd'])
+@push('title') | Usuarios @endpush
 
 @section('content')
 <div class="content">
@@ -18,45 +18,27 @@
                 </div>
               </div>
               <div class="table-responsive">
-                <table class="table">
+                <table id="tableUsers" class="table">
                   <thead class=" text-info">
                     <tr>
                       <th>Nombre</th>
                       <th>Email</th>
                       <th>Rol</th>
                       <th>Fecha de creación</th>
-                      <th>Activo</th>
+                      {{-- <th>Activo</th> --}}
                       <th class="text-right">Acciones</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    @foreach ($users as $user)
-                      <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->getRoleNames() }}</td>
-                        <td>{{ $user->created_at }}</td>
-                        <td>
-                          <div class="togglebutton">
-                            <label>
-                              <input id="activeUser" type="checkbox" >
-                                <span class="toggle"></span>
-                            </label>
-                          </div>
-                        </td>
-                        <td class="td-actions text-right">
-                        <a href="#" type="button" rel="tooltip" class="btn btn-success  btn-round">
-                            <i class="material-icons">edit</i>
-                        </a>
-                        @can('delete user')
-                          <button type="button" rel="tooltip" class="btn btn-danger btn-round">
-                            <i class="material-icons">close</i>
-                          </button>
-                        @endcan
-                        </td>
-                      </tr>
-                    @endforeach
-                  </tbody>
+                  <tfoot class="ttt">
+                    <tr>
+                      <th>Nombre</th>
+                      <th>Email</th>
+                      <th>Rol</th>
+                      <th>Fecha de creación</th>
+                      {{-- <th>Activo</th> --}}
+                      <th class="text-right">Acciones</th>
+                    </tr>
+                  </tfoot>
                 </table>
               </div>
             </div>

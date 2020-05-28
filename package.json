@@ -22,5 +22,14 @@
         "sass-loader": "^8.0.0",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "datatables.net": "^1.10.21",
+        "datatables.net-buttons-se": "^1.6.2",
+        "datatables.net-dt": "^1.10.21",
+        "datatables.net-se": "^1.10.21",
+        "fomantic-ui": "^2.8.4",
+        "jquery-confirm": "^3.3.4",
+        "pdfmake": "^0.1.65"
     }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class UsersTableSeeder extends Seeder
 {
@@ -17,7 +18,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@material.com',
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
-            'slug'=>'UserAdmin',
+            'slug'=>'UserAdmin'.substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 4),
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -26,7 +27,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'profesor@material.com',
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
-            'slug'=>'UserProfesor',
+            'slug'=>'UserProfesor'.substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 4),
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -35,7 +36,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'estudiante@material.com',
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
-            'slug'=>'UserEstudiante',
+            'slug'=>'UserEstudiante'.substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 4),
             'created_at' => now(),
             'updated_at' => now()
         ]);

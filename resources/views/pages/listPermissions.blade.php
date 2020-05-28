@@ -1,5 +1,5 @@
-@extends('layouts.app',['activePage' => 'permissionsUser', 'titlePage' => __('Perfil de Usuarios'),'title'=>'asd'])
-@section('title',' | Usuarios')
+@extends('layouts.app',['activePage' => 'permissionsUser', 'titlePage' => __('Lista De Permisos')])
+@push('title') | Permisos @endpush
 
 @section('content')
 <div class="content">

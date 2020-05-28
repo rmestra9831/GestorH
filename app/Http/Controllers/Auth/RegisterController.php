@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\Response;
+use Illuminate\Http\Request;
+use App\User;
 
 class RegisterController extends Controller
 {
@@ -60,6 +61,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'rol' => ['required'],
             'password' => ['required', 'string', 'min:3', 'confirmed'],
         ]);
     }
@@ -88,14 +90,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // dd($data);
-        return User::create([
+        $rol = Role::where('id',$data['rol'])->firstOrFail();
+        // dd($rol->name);
+        $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'slug' => $data['name'].now()."",
+            'slug' => $data['name'].substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 4),
             'password' => Hash::make($data['password']),
         ]);
-        
+        $user->assignRole("".$rol->name."");
     }
-
 }

@@ -47,7 +47,7 @@
 
       
               <div class="bmd-form-group{{ $errors->has('position') ? ' has-danger' : '' }} mt-3">
-                  {{-- <div class="input-group">
+                  <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">
                         <i class="material-icons">view_stream</i>
@@ -56,14 +56,12 @@
                     <div class="ui selection dropdown form-control selectpicker">
                       <div class="default text">Cargo</div>
                       <i class="dropdown icon"></i>
-                      <input class="form-control" type="hidden" name="position">
-                      <div class="menu">
-                        @foreach ($positions ?? '' as $position)
-                        <div class="item" data-value="{{ $position->id }}">{{ $position->name }}</div>
-                        @endforeach
+                      <input class="form-control" type="hidden" name="rol">
+                      <div id="selectRole" class="menu">
+                        {{-- <div class="item" data-value="0">Seleccionar Rol</div> --}}
                       </div>
                     </div>
-                  </div> --}}
+                  </div>
                 
                   <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : '' }} mt-3">
                     <div class="input-group">

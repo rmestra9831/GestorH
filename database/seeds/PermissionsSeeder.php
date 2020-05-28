@@ -28,22 +28,22 @@ class PermissionsSeeder extends Seeder
         
         $permission = Permission::create(['name' => 'schedules']);
 
-        $admin = Role::create(['name' => 'admin']);
+        $admin = Role::create(['name' => 'Administrador']);
         $admin->givePermissionTo(['create user','schedules','create schedule','edit schedule','permissions']);
         $user = User::where('id',1)->firstOrFail();
-        $user->assignRole('admin');
+        $user->assignRole('Administrador');
         $user->givePermissionTo(['edit user','assign permissions']);
 
-        $teacher = Role::create(['name' => 'teacher']);
+        $teacher = Role::create(['name' => 'Docente']);
         $teacher->givePermissionTo(['schedules','create schedule','edit schedule']);
         $user = User::where('id',2)->firstOrFail();
-        $user->assignRole('teacher');
+        $user->assignRole('Docente');
 
 
-        $student = Role::create(['name' => 'student']);
+        $student = Role::create(['name' => 'Estudiante']);
         $student->givePermissionTo('');
         $user = User::where('id',3)->firstOrFail();
-        $user->assignRole('student');
+        $user->assignRole('Estudiante');
 
 
     }

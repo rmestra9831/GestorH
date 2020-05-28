@@ -48,7 +48,7 @@
         </li>
       @endcan
       {{-- dropdown --}}
-      @hasrole('admin')
+      @hasrole('Administrador')
         <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
           <a class="nav-link collapsed" data-toggle="collapse" href="#laravelExample" aria-expanded="false">
             <i class="material-icons">mood</i>
@@ -115,7 +115,7 @@
       {{-- pie de pagina --}}
       <li class="nav-item active-pro bg-info">
         <div class="nav-link text-white">
-          <p class="MichromaRegular text-center">@role('admin') Administrador @else @if('teacher') Docente @else Estudiante @endrole @endrole</p>
+          <p class="MichromaRegular text-center">@role('Administrador') Administradoristrador @else @if('Docente') Docente @else Estudiante @endrole @endrole</p>
         </div>
       </li>
     </ul>
