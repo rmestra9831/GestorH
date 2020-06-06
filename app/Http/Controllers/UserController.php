@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function __construct(){
+        $this->middleware('can:create user');
+    }
     /**
      * Display a listing of the users
      *

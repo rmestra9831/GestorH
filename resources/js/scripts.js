@@ -25,6 +25,7 @@ $('.ui.calendar').calendar({
   },
 });
 // <!-- CAMBIAR ROLES  -->
+
 if (window.location.pathname == '/register') {
   $.ajax({
     type: "GET",

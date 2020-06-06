@@ -9,6 +9,10 @@ use DataTables;
 
 class AjaxController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+    
     public function getRole(){
         $roles = Role::get();  
         return response()->json($roles); 

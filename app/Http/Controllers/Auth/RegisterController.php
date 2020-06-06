@@ -43,7 +43,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','can:create user']);
     }
     public function showRegistrationForm()
     {   

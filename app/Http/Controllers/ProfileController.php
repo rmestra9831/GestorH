@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileRequest;
+use Spatie\Permission\Models\Permission;
 use App\Http\Requests\PasswordRequest;
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
+use App\User;   
 
 class ProfileController extends Controller
 {
+    public function __construct(){
+        $this->middleware(['auth','can:create user']);
+    }
     /**
      * Show the form for editing the profile.
      *
@@ -27,6 +33,19 @@ class ProfileController extends Controller
     public function update(ProfileRequest $request)
     {
         auth()->user()->update($request->all());
+
+        return back()->withStatus(__('Profile successfully updated.'));
+    }
+    public function editUser($slug)
+    {
+        $roles = Role::get();
+        $user= User::where('slug',$slug)->firstOrFail();
+        return view('profile.editUser', compact(['user','roles']));
+    }
+    public function updateUser(Request $request, $slug)
+    {
+        $user = User::where('slug',$slug)->firstOrFail();
+        $user->update($request->all());
 
         return back()->withStatus(__('Profile successfully updated.'));
     }

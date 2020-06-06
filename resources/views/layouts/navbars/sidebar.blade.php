@@ -20,14 +20,14 @@
       </li>
       {{-- horarios --}}
       @can('schedules', Model::class)
-        <li class="nav-item {{ ($activePage == 'permissionsUser') ? ' active' : '' }}">
+        <li class="nav-item {{ ($activePage == 'newSchedule') ? ' active' : '' }}">
           <a class="nav-link collapsed" data-toggle="collapse" href="#schedule" aria-expanded="false">
             <i class="material-icons">calendar_view_day</i>
             <p class="MichromaRegular">{{ __('Horarios') }}
               <b class="caret"></b>
             </p>
           </a>
-          <div class="collapse {{ ($activePage ==   'permissionsUser') ? ' show' : '' }}" id="schedule">
+          <div class="collapse {{ ($activePage ==   'newSchedule') ? ' show' : '' }}" id="schedule">
             <ul class="nav">
               <li class="nav-item{{ $activePage == 'permissionsUser' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('permissionsUser.view') }}">
@@ -36,8 +36,8 @@
                 </a> 
               </li>
               @can('create schedule')
-                <li class="nav-item{{ $activePage == 'schedule' ? ' active' : '' }}">
-                  <a class="nav-link" href="{{ route('profile.edit') }}">
+                <li class="nav-item{{ $activePage == 'newSchedule' ? ' active' : '' }}">
+                  <a class="nav-link" href="{{ route('schedule.new') }}">
                     <span class="sidebar-mini"> CH </span>
                     <span class="sidebar-normal MichromaRegular">{{ __('Crear Horario') }} </span>
                   </a> 
@@ -48,22 +48,16 @@
         </li>
       @endcan
       {{-- dropdown --}}
-      @hasrole('Administrador')
-        <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
-          <a class="nav-link collapsed" data-toggle="collapse" href="#laravelExample" aria-expanded="false">
-            <i class="material-icons">mood</i>
-            <p class="MichromaRegular">{{ __('Usuarios') }}
-              <b class="caret"></b>
-            </p>
-          </a>
-          <div class="collapse {{ ($activePage == 'profile' || $activePage == 'user-management' || $activePage == 'register') ? ' show' : '' }}" id="laravelExample">
-            <ul class="nav">
-              <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('profile.edit') }}">
-                  <span class="sidebar-mini"> MP </span>
-                  <span class="sidebar-normal MichromaRegular">{{ __('Mi Perfil') }} </span>
-                </a> 
-              </li>
+      <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
+        <a class="nav-link collapsed" data-toggle="collapse" href="#laravelExample" aria-expanded="false">
+          <i class="material-icons">mood</i>
+          <p class="MichromaRegular">{{ __('Usuarios') }}
+            <b class="caret"></b>
+          </p>
+        </a>
+        <div class="collapse {{ ($activePage == 'profile' || $activePage == 'user-management' || $activePage == 'register') ? ' show' : '' }}" id="laravelExample">
+          <ul class="nav">
+            @hasrole('Administrador')
               @can('create user')
                 <li class="nav-item{{ $activePage == 'register' ? ' active' : '' }}">
                   <a class="nav-link" href="{{ route('register') }}">
@@ -80,10 +74,16 @@
                   </a>
                 </li>
               @endcan
+              @endhasrole
+              <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('profile.edit') }}">
+                  <span class="sidebar-mini"> MP </span>
+                  <span class="sidebar-normal MichromaRegular">{{ __('Mi Perfil') }} </span>
+                </a> 
+              </li>
             </ul>
           </div>
         </li>
-      @endhasrole
       @can('permissions', Model::class)
         <li class="nav-item {{ ($activePage == 'permissionsUser') ? ' active' : '' }}">
           <a class="nav-link collapsed" data-toggle="collapse" href="#permissions" aria-expanded="false">
