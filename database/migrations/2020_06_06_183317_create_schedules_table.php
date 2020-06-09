@@ -17,7 +17,12 @@ class CreateSchedulesTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('nameSchedule');
-            $table->string('nameSchedule    ');
+            $table->string('l1');
+            $table->string('l2');
+            $table->string('l3');
+            $table->string('l4');
+            $table->string('l5');
+            $table->string('l6');
             $table->timestamps();
         });
     }

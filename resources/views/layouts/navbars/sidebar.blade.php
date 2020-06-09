@@ -27,7 +27,7 @@
               <b class="caret"></b>
             </p>
           </a>
-          <div class="collapse {{ ($activePage ==   'newSchedule') ? ' show' : '' }}" id="schedule">
+          <div class="collapse {{ ($activePage ==   'newSchedule' || $activePage == 'newMateria') ? ' show' : '' }}" id="schedule">
             <ul class="nav">
               <li class="nav-item{{ $activePage == 'permissionsUser' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('permissionsUser.view') }}">
@@ -35,6 +35,14 @@
                   <span class="sidebar-normal MichromaRegular">{{ __('lista') }} </span>
                 </a> 
               </li>
+              @can('create materia')
+                <li class="nav-item{{ $activePage == 'newMateria' ? ' active' : '' }}">
+                  <a class="nav-link" href="{{ route('schedule.newMateria') }}">
+                    <span class="sidebar-mini"> CM </span>
+                    <span class="sidebar-normal MichromaRegular">{{ __('Crear Materia') }} </span>
+                  </a> 
+                </li>
+              @endcan
               @can('create schedule')
                 <li class="nav-item{{ $activePage == 'newSchedule' ? ' active' : '' }}">
                   <a class="nav-link" href="{{ route('schedule.new') }}">
@@ -43,6 +51,7 @@
                   </a> 
                 </li>
               @endcan
+            
             </ul>
           </div>
         </li>

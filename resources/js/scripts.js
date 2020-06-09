@@ -25,7 +25,32 @@ $('.ui.calendar').calendar({
   },
 });
 // <!-- CAMBIAR ROLES  -->
+// Guardado de la materia
+// obteniendo color
+var btnsColor = $('.selectColor button');
+$(btnsColor).click(function(e){
+  var c = $(this).attr('color');
+  $(btnsColor).removeClass('active');
+  $(this).addClass('active');
+});
+//  <!-- GUARDANDO DATOS DE LA MATERIA  -->
+$('.saveMateria').click(function (e) {
+  e.preventDefault();
+  var btn = $('.selectColor button[class~="active"]');
+  var name = $('input[name="nameMateria"]').val();
+  var array = [btn,name];
+  $.ajax({
+    type: "post",
+    url: "/schedule/MateriaStore",
+    data: {"array": JSON.stringify(array)},
+    success: function (response) {
+      console.log(response)
+    }
+  });
+  console.log(name);
+});
 
+//  <!-- REGISTRO DE USUARIOS  -->
 if (window.location.pathname == '/register') {
   $.ajax({
     type: "GET",
@@ -39,4 +64,4 @@ if (window.location.pathname == '/register') {
       });
     }
   });
-} 
+}

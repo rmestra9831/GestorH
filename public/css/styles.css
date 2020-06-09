@@ -31,3 +31,9 @@
   padding-left: 0 !important;
 }
 
+#horas {
+  background: #00bdd400;
+  border: 2px solid #0000003b;
+  width: 150px;
+}
+

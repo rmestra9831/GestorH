@@ -81,101 +81,98 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/scripts.js":
-/*!*********************************!*\
-  !*** ./resources/js/scripts.js ***!
-  \*********************************/
+/***/ "./resources/js/draganddrop.js":
+/*!*************************************!*\
+  !*** ./resources/js/draganddrop.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// <!-- dropdown-->
-$('.ui.dropdown').dropdown(); // <!-- CALENDARIOS  -->
+if (window.location.pathname == '/schedule/new') {
+  var lista = document.getElementById('lista');
+  var dia1 = document.getElementById('day1');
+  var dia2 = document.getElementById('day2');
+  var dia3 = document.getElementById('day3');
+  var dia4 = document.getElementById('day4');
+  var dia5 = document.getElementById('day5'); // console.log(lista);
 
-$('.ui.calendar').calendar({
-  monthFirst: false,
-  type: 'date',
-  dateHandling: 'formatter',
-  formatter: {
-    date: function date(_date, settings) {
-      if (!_date) return '';
-
-      var day = _date.getDate();
-
-      var month = _date.getMonth() + 1;
-
-      var year = _date.getFullYear();
-
-      return day + '/' + month + '/' + year;
-    }
-  },
-  text: {
-    days: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
-    months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-    monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'Mayo', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dec'],
-    today: 'Aujourd\'hui',
-    now: 'Hoy',
-    am: 'AM',
-    pm: 'PM'
-  }
-}); // <!-- CAMBIAR ROLES  -->
-// Guardado de la materia
-// obteniendo color
-
-var btnsColor = $('.selectColor button');
-$(btnsColor).click(function (e) {
-  var c = $(this).attr('color');
-  $(btnsColor).removeClass('active');
-  $(this).addClass('active');
-}); //  <!-- GUARDANDO DATOS DE LA MATERIA  -->
-
-$('.saveMateria').click(function (e) {
-  e.preventDefault();
-  var btn = $('.selectColor button[class~="active"]');
-  var name = $('input[name="nameMateria"]').val();
-  var array = [btn, name];
-  $.ajax({
-    type: "post",
-    url: "/schedule/MateriaStore",
-    data: {
-      "array": JSON.stringify(array)
+  var x1;
+  Sortable.create(lista, {
+    group: {
+      name: 'lista',
+      pull: 'clone',
+      put: false
     },
-    success: function success(response) {
-      console.log(response);
+    dragClass: 'drag',
+    animation: 150
+  });
+  Sortable.create(dia1, {
+    group: {
+      name: 'lista'
+    },
+    filter: '.break',
+    dragClass: 'drag',
+    animation: 150,
+    store: {
+      set: function set(sortable) {
+        x1 = orden = sortable.toArray();
+        console.log(x1);
+      }
     }
   });
-  console.log(name);
-}); //  <!-- REGISTRO DE USUARIOS  -->
+  Sortable.create(dia2, {
+    group: {
+      name: 'lista'
+    },
+    filter: '.break',
+    dragClass: 'drag',
+    animation: 150
+  });
+  Sortable.create(dia3, {
+    group: {
+      name: 'lista'
+    },
+    filter: '.break',
+    dragClass: 'drag',
+    animation: 150
+  });
+  Sortable.create(dia4, {
+    group: {
+      name: 'lista'
+    },
+    filter: '.break',
+    dragClass: 'drag',
+    animation: 150
+  });
+  Sortable.create(dia5, {
+    group: {
+      name: 'lista'
+    },
+    filter: '.break',
+    dragClass: 'drag',
+    animation: 150
+  }); //Remover items de las listas
 
-if (window.location.pathname == '/register') {
-  $.ajax({
-    type: "GET",
-    url: "admin/getRole",
-    success: function success(response) {
-      console.log(response);
-      var rol_select = '<div class="item" data-value="0">Seleccionar</div>';
-      $.each(response, function (r) {
-        rol_select = '<div class="item" data-value="' + response[r].id + '">' + response[r].name + '</div>';
-        $('#selectRole').append(rol_select);
-      });
-    }
+  $(".removeItemList").on('click', function () {
+    $(this).parent().fadeOut('medium'); // $(this).parent().remove();
   });
 }
 
 /***/ }),
 
-/***/ 1:
-/*!***************************************!*\
-  !*** multi ./resources/js/scripts.js ***!
-  \***************************************/
+/***/ 3:
+/*!*******************************************!*\
+  !*** multi ./resources/js/draganddrop.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Apps\laragon\www\GestorH\resources\js\scripts.js */"./resources/js/scripts.js");
+module.exports = __webpack_require__(/*! D:\Apps\laragon\www\GestorH\resources\js\draganddrop.js */"./resources/js/draganddrop.js");
 
 
 /***/ })

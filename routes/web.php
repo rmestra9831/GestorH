@@ -43,4 +43,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::prefix('schedule')->group(function () {
 	Route::get('new', ['as' => 'schedule.new', 'uses' => 'ScheduleController@create']);
+	Route::get('newMateria', ['as' => 'schedule.newMateria', 'uses' => 'ScheduleController@createMateria']);
+	Route::post('MateriaStore', ['as' => 'schedule.newMateriaStore', 'uses' => 'ScheduleController@storeMateria']);
 });

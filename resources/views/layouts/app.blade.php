@@ -20,6 +20,7 @@
     {{-- Estilos datatable --}}
     <link href="{{ asset('css/jquery-confirm.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/dragdrog.css') }}" rel="stylesheet" />
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
@@ -38,6 +39,8 @@
         <script src="{{ asset('semantic/dist/semantic.min.js') }}"></script>
         <script src="{{ asset('js/ajax.js') }}"></script>
         <script src="{{ asset('js/scripts.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+        <script src="{{ asset('js/draganddrop.js') }}"></script>
         <script src="{{ asset('js/jquery-confirm.js') }}"></script>
         <!--   Core JS Files   -->
         <script src="{{ asset('material') }}/js/core/popper.min.js"></script>
