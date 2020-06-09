@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Materia;
 
 class ScheduleController extends Controller
 {
@@ -11,7 +12,8 @@ class ScheduleController extends Controller
     }
 
     public function create(){
-        return view('pages.createSchedule');
+        $materias = Materia::get();
+        return view('pages.createSchedule',compact('materias'));
     }
     public function createMateria(){
         return view('pages.createMateria');

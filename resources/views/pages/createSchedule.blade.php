@@ -37,12 +37,15 @@
           {{-- lista para seleccionar --}}
           <div class="lists">
             <div class="list" id="lista">
-              <button class="ui inverted button">Standard <span class="material-icons removeItemList">clear</span></button>
-              <button class="ui list-item item red button">Red <span class="material-icons removeItemList">clear</span></button>
-              <button class="ui list-item item orange button">Orange <span class="material-icons removeItemList">clear</span></button>
-              <button class="ui list-item item yellow button">Yellow <span class="material-icons removeItemList">clear</span></button>
-              <button class="ui list-item item olive button">Olive <span class="material-icons removeItemList">clear</span></button>
-              <button class="ui list-item item green button">Green <span class="material-icons removeItemList">clear</span></button>
+              @foreach ($materias as $materia)
+                <button class="ui list-item item {{ $materia->color }} button">{{ $materia->name }} <span class="material-icons removeItemList">clear</span></button>
+              @endforeach
+              {{-- <button class="ui list-item item red button">Red <span class="material-icons removeItemList">clear</span></button> --}}
+              {{-- <button class="ui list-item item orange button">Orange <span class="material-icons removeItemList">clear</span></button> --}}
+              {{-- <button class="ui list-item item yellow button">Yellow <span class="material-icons removeItemList">clear</span></button> --}}
+              {{-- <button class="ui list-item item olive button">Olive <span class="material-icons removeItemList">clear</span></button> --}}
+              {{-- <button class="ui list-item item green button">Green <span class="material-icons removeItemList">clear</span></button> --}}
+              
               {{-- <div class="list-item" data-id="item1">item 1 <span class="material-icons removeItemList">clear</span></div>
               <div class="list-item" data-id="item2">item 2 <span class="material-icons removeItemList">clear</span></div>
               <div class="list-item" data-id="item3">item 3 <span class="material-icons removeItemList">clear</span></div>
