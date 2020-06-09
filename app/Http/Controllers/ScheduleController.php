@@ -16,9 +16,12 @@ class ScheduleController extends Controller
     public function createMateria(){
         return view('pages.createMateria');
     }
-    public function storeMateria($request){
-        if ($request->ajax()) {
+    public function storeMateria(Request $request){
+        // return('asd');
+        if ($request()->ajax()) {
             return response()->json('si es');
+        }else{
+            return response()->json('no es');
         }
     }
 }

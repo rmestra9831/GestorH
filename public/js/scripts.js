@@ -141,9 +141,7 @@ $('.saveMateria').click(function (e) {
   $.ajax({
     type: "post",
     url: "/schedule/MateriaStore",
-    data: {
-      "array": JSON.stringify(array)
-    },
+    data: btn,
     success: function success(response) {
       console.log(response);
     }

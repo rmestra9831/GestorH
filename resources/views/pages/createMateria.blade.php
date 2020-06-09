@@ -12,32 +12,32 @@
               <h4 class="card-title text-center">Materia</h4>
             </div>
             <div class="card-body ">
-              <div class="bmd-form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                <div class="input-group justify-content-center">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">
-                        <i class="material-icons">face</i>
-                    </span>
+                <div class="bmd-form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                  <div class="input-group justify-content-center">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                          <i class="material-icons">face</i>
+                      </span>
+                    </div>
+                    <input type="text" name="nameMateria" class="form-control col-md-5" placeholder="{{ __('ingresa el nombre de la materia') }}"  required><button type="button" class="btn btn-info ml-2 saveMateria">Guardar</button>
                   </div>
-                  <input type="text" name="nameMateria" class="form-control col-md-5" placeholder="{{ __('ingresa el nombre de la materia') }}"  required><button type="button" class="btn btn-info ml-2 saveMateria">Guardar</button>
-                </div>
-                <div class="selectColor container-fluid">
-                  <div class="row justify-content-center m-auto col-md-8">
-                    <button color="secondary" class="ui inverted secondary button"><span class="material-icons">donut_large</span></button>
-                    <button color="red" class="ui inverted red button"><span class="material-icons">donut_large</span></button>
-                    <button color="orange" class="ui inverted orange button"><span class="material-icons">donut_large</span></button>
-                    <button color="yellow" class="ui inverted yellow button"><span class="material-icons">donut_large</span></button>
-                    <button color="olive" class="ui inverted olive button"><span class="material-icons">donut_large</span></button>
-                    <button color="green" class="ui inverted green button"><span class="material-icons">donut_large</span></button>
-                    <button color="teal" class="ui inverted teal button"><span class="material-icons">donut_large</span></button>
-                    <button color="blue" class="ui inverted blue button"><span class="material-icons">donut_large</span></button>
-                    <button color="violet" class="ui inverted violet button"><span class="material-icons">donut_large</span></button>
-                    <button color="purple" class="ui inverted purple button"><span class="material-icons">donut_large</span></button>
-                    <button color="pink" class="ui inverted pink button"><span class="material-icons">donut_large</span></button>
-                    <button color="brown" class="ui inverted brown button"><span class="material-icons">donut_large</span></button>
+                  <div class="selectColor container-fluid">
+                    <div class="row justify-content-center m-auto col-md-8">
+                      <button color="secondary" class="ui inverted secondary button"><span class="material-icons">donut_large</span></button>
+                      <button color="red" class="ui inverted red button"><span class="material-icons">donut_large</span></button>
+                      <button color="orange" class="ui inverted orange button"><span class="material-icons">donut_large</span></button>
+                      <button color="yellow" class="ui inverted yellow button"><span class="material-icons">donut_large</span></button>
+                      <button color="olive" class="ui inverted olive button"><span class="material-icons">donut_large</span></button>
+                      <button color="green" class="ui inverted green button"><span class="material-icons">donut_large</span></button>
+                      <button color="teal" class="ui inverted teal button"><span class="material-icons">donut_large</span></button>
+                      <button color="blue" class="ui inverted blue button"><span class="material-icons">donut_large</span></button>
+                      <button color="violet" class="ui inverted violet button"><span class="material-icons">donut_large</span></button>
+                      <button color="purple" class="ui inverted purple button"><span class="material-icons">donut_large</span></button>
+                      <button color="pink" class="ui inverted pink button"><span class="material-icons">donut_large</span></button>
+                      <button color="brown" class="ui inverted brown button"><span class="material-icons">donut_large</span></button>
+                    </div>
                   </div>
                 </div>
-              </div>
             </div>
           </div>
         </div>
