@@ -1,0 +1,1 @@
+<button class="ui {{ $color }} button w-75"></button>

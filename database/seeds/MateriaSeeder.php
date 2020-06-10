@@ -12,31 +12,31 @@ class MateriaSeeder extends Seeder
     public function run()
     {
         DB::table('materias')->insert([
-            'name' => 'Matematicas 1',
+            'name' => 'matematicas 1',
             'color' => 'red',
             'created_at' => now(),
             'updated_at' => now()
         ]);
         DB::table('materias')->insert([
-            'name' => 'Sociales',
+            'name' => 'sociales',
             'color' => 'blue',
             'created_at' => now(),
             'updated_at' => now()
         ]);
         DB::table('materias')->insert([
-            'name' => 'Fisica',
+            'name' => 'fisica',
             'color' => 'green',
             'created_at' => now(),
             'updated_at' => now()
         ]);
         DB::table('materias')->insert([
-            'name' => 'Español',
+            'name' => 'español',
             'color' => 'grey',
             'created_at' => now(),
             'updated_at' => now()
         ]);
         DB::table('materias')->insert([
-            'name' => 'Biologia',
+            'name' => 'biologia',
             'color' => 'yellow',
             'created_at' => now(),
             'updated_at' => now()

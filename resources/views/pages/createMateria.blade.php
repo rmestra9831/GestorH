@@ -19,9 +19,10 @@
                           <i class="material-icons">face</i>
                       </span>
                     </div>
-                    <input type="text" name="nameMateria" class="form-control col-md-5" placeholder="{{ __('ingresa el nombre de la materia') }}"  required><button type="button" class="btn btn-info ml-2 saveMateria">Guardar</button>
+                    <input type="text" name="nameMateria" class="form-control col-md-5 text-capitalize" placeholder="{{ __('ingresa el nombre de la materia') }}"  required><button type="button" class="btn btn-info ml-2 saveMateria">Guardar</button>
                   </div>
                   <div class="selectColor container-fluid">
+                    <p class="card-category text-center">Selecciona el color que desas asignarle a la materia</p>
                     <div class="row justify-content-center m-auto col-md-8">
                       <button color="secondary" class="ui inverted secondary button"><span class="material-icons">donut_large</span></button>
                       <button color="red" class="ui inverted red button"><span class="material-icons">donut_large</span></button>
@@ -55,29 +56,20 @@
             </div>
             <div class="card-body">
               <div class="row">
-                <div class="col-12 text-right">
-                  <a href="{{ route('register') }}" class="btn btn-sm btn-info">Nuevo Usuario</a>
-                </div>
               </div>
               <div class="table-responsive">
                 <table id="tableMaterias" class="table">
                   <thead class=" text-info">
                     <tr>
                       <th>Nombre</th>
-                      <th>Email</th>
-                      <th>Rol</th>
-                      <th>Fecha de creación</th>
-                      {{-- <th>Activo</th> --}}
+                      <th>color</th>
                       <th class="text-right">Acciones</th>
                     </tr>
                   </thead>
                   <tfoot class="ttt">
                     <tr>
                       <th>Nombre</th>
-                      <th>Email</th>
-                      <th>Rol</th>
-                      <th>Fecha de creación</th>
-                      {{-- <th>Activo</th> --}}
+                      <th>color</th>
                       <th class="text-right">Acciones</th>
                     </tr>
                   </tfoot>

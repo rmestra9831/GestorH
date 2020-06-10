@@ -35,6 +35,7 @@
         {{-- scrips --}}
         <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
         {{-- <script type="text/javascript" src="https://cdn.datatables.net/v/se/dt-1.10.21/datatables.min.js"></script> --}}
+        <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.5/dist/semantic.min.js"></script>
         <script src="{{ asset('material') }}/js/plugins/jquery.dataTables.min.js"></script>
         <script src="{{ asset('semantic/dist/semantic.min.js') }}"></script>
         <script src="{{ asset('js/ajax.js') }}"></script>

@@ -44,5 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::prefix('schedule')->group(function () {
 	Route::get('new', ['as' => 'schedule.new', 'uses' => 'ScheduleController@create']);
 	Route::get('newMateria', ['as' => 'schedule.newMateria', 'uses' => 'ScheduleController@createMateria']);
-	Route::post('MateriaStore', ['as' => 'schedule.newMateriaStore', 'uses' => 'ScheduleController@storeMateria']);
+	Route::get('getMateria', ['as' => 'schedule.getMateria', 'uses' => 'ScheduleController@getMateria']);
+	Route::delete('materia/{id}/delete', ['as' => 'schedule.deleteMateria', 'uses' => 'ScheduleController@deleteMateria']);
+	Route::post('MateriaStore', ['as' => 'schedule.MateriaStore', 'uses' => 'ScheduleController@storeMateria']);
 });

@@ -4,6 +4,14 @@
   flex: 1;
 }
 
+.lists .list {
+  text-align: center;
+}
+
+.lists .list button {
+  margin: 5px;
+}
+
 .lists .list-item {
   display: inline-flex;
   background: #FF7058;

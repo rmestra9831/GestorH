@@ -120,8 +120,25 @@ if (window.location.pathname == '/schedule/new') {
     animation: 150,
     store: {
       set: function set(sortable) {
-        x1 = orden = sortable.toArray();
-        console.log(x1);
+        orden = sortable.toArray(); // array.push[orden];
+
+        console.log(orden);
+      }
+    },
+    onAdd: function onAdd(evt) {
+      var day1 = document.querySelectorAll('#day1 .list-item');
+
+      if (day1.length > 6) {
+        var $item = $(evt.item);
+        $.alert({
+          theme: 'Modern',
+          icon: 'lh exclamation triangle icon',
+          title: 'Lo sentimos',
+          type: 'orange',
+          content: 'No puedes agregar mas materias, elimina para poder colocarla',
+          typeAnimated: true
+        });
+        $item.remove();
       }
     }
   });
@@ -131,7 +148,23 @@ if (window.location.pathname == '/schedule/new') {
     },
     filter: '.break',
     dragClass: 'drag',
-    animation: 150
+    animation: 150,
+    onAdd: function onAdd(evt) {
+      var day2 = document.querySelectorAll('#day2 .list-item');
+
+      if (day2.length > 6) {
+        var $item = $(evt.item);
+        $.alert({
+          theme: 'Modern',
+          icon: 'lh exclamation triangle icon',
+          title: 'Lo sentimos',
+          type: 'orange',
+          content: 'No puedes agregar mas materias, elimina para poder colocarla',
+          typeAnimated: true
+        });
+        $item.remove();
+      }
+    }
   });
   Sortable.create(dia3, {
     group: {
@@ -139,7 +172,23 @@ if (window.location.pathname == '/schedule/new') {
     },
     filter: '.break',
     dragClass: 'drag',
-    animation: 150
+    animation: 150,
+    onAdd: function onAdd(evt) {
+      var day3 = document.querySelectorAll('#day3 .list-item');
+
+      if (day3.length > 6) {
+        var $item = $(evt.item);
+        $.alert({
+          theme: 'Modern',
+          icon: 'lh exclamation triangle icon',
+          title: 'Lo sentimos',
+          type: 'orange',
+          content: 'No puedes agregar mas materias, elimina para poder colocarla',
+          typeAnimated: true
+        });
+        $item.remove();
+      }
+    }
   });
   Sortable.create(dia4, {
     group: {
@@ -147,7 +196,23 @@ if (window.location.pathname == '/schedule/new') {
     },
     filter: '.break',
     dragClass: 'drag',
-    animation: 150
+    animation: 150,
+    onAdd: function onAdd(evt) {
+      var day4 = document.querySelectorAll('#day4 .list-item');
+
+      if (day4.length > 6) {
+        var $item = $(evt.item);
+        $.alert({
+          theme: 'Modern',
+          icon: 'lh exclamation triangle icon',
+          title: 'Lo sentimos',
+          type: 'orange',
+          content: 'No puedes agregar mas materias, elimina para poder colocarla',
+          typeAnimated: true
+        });
+        $item.remove();
+      }
+    }
   });
   Sortable.create(dia5, {
     group: {
@@ -155,13 +220,40 @@ if (window.location.pathname == '/schedule/new') {
     },
     filter: '.break',
     dragClass: 'drag',
-    animation: 150
+    animation: 150,
+    onAdd: function onAdd(evt) {
+      var day5 = document.querySelectorAll('#day5 .list-item');
+
+      if (day5.length > 6) {
+        var $item = $(evt.item);
+        $.alert({
+          theme: 'Modern',
+          icon: 'lh exclamation triangle icon',
+          title: 'Lo sentimos',
+          type: 'orange',
+          content: 'No puedes agregar mas materias, elimina para poder colocarla',
+          typeAnimated: true
+        });
+        $item.remove();
+      }
+    }
   }); //Remover items de las listas
 
   $(".removeItemList").on('click', function () {
-    $(this).parent().fadeOut('medium'); // $(this).parent().remove();
+    $(this).parent().fadeOut('medium').remove(); // $(this).parent().remove();
+  }); // <!-- BOTON GUARDAR HORARIO -->
+
+  $('#saveSchedule').click(function (e) {
+    Sortable.create(dia1, {
+      store: {
+        set: function set(sortable) {
+          x1 = orden = sortable.toArray();
+          console.log(x1);
+        }
+      }
+    });
   });
-}
+} //aqui termina
 
 /***/ }),
 

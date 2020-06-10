@@ -1,5 +1,25 @@
-// <!-- dropdown-->
-$('.ui.dropdown').dropdown();
+  // <!-- dropdown-->
+  $('.ui.dropdown').dropdown();
+//  <!-- REGISTRO DE USUARIOS  -->
+if (window.location.pathname == '/register') {
+
+  $.ajax({
+    type: "GET",
+    url: "admin/getRole",
+    success: function success(response) {
+      console.log(response);
+      var rol_select = '<div class="item" data-value="0">Seleccionar</div>';
+      $.each(response, function (r) {
+        rol_select = '<div class="item" data-value="'+response[r].id+'">'+response[r].name+'</div>';
+        // console.log
+        $('#selectRole').append(rol_select);
+      });
+    }
+  });
+}
+
+$(document).ready(function () {
+  $.ajaxSetup({headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }});
 // <!-- CALENDARIOS  -->
 $('.ui.calendar').calendar({
   monthFirst: false,
@@ -36,32 +56,49 @@ $(btnsColor).click(function(e){
 //  <!-- GUARDANDO DATOS DE LA MATERIA  -->
 $('.saveMateria').click(function (e) {
   e.preventDefault();
-  var btn = $('.selectColor button[class~="active"]');
+  var btn = $('.selectColor button[class~="active"]').attr('color');
   var name = $('input[name="nameMateria"]').val();
-  var array = [btn,name];
-  $.ajax({
-    type: "post",
-    url: "/schedule/MateriaStore",
-    data: btn,
-    success: function (response) {
-      console.log(response)
-    }
-  });
-  console.log(name);
+  if (name == "" || btn == "") {
+    $.alert({
+      theme: 'Modern',
+      icon: 'lh exclamation triangle icon',
+      title: 'Cuidado, No estan completos los datos',
+      type: 'orange',
+      content: 'Revisa los datos antes de continuar',
+      typeAnimated: true
+    });
+  }else{
+    var array = [name,btn];
+    $.ajax({
+      type: "POST",
+      url: "/schedule/MateriaStore",
+      data: {'array': JSON.stringify(array)},
+      success: function (response) {
+        if (response == 'error') {
+          $.alert({
+            theme: 'Modern',
+            icon: 'lh exclamation triangle icon',
+            title: 'Ups',
+            type: 'red',
+            content: 'Actualmente hay un mismo registro con el nombre <strong>" '+name+' "</strong>',
+            typeAnimated: true
+          });
+        }else{
+          $.alert({
+            theme: 'Modern',
+            icon: 'lh exclamation triangle icon',
+            title: '! Listo ¡',
+            type: 'blue',
+            content: 'Se creó la materia correctamente',
+            typeAnimated: true
+          });
+          $(btnsColor).removeClass('active');
+          $('input[name="nameMateria"]').value = "";
+        };
+      }
+    });
+  }
 });
 
-//  <!-- REGISTRO DE USUARIOS  -->
-if (window.location.pathname == '/register') {
-  $.ajax({
-    type: "GET",
-    url: "admin/getRole",
-    success: function success(response) {
-      console.log(response);
-      var rol_select = '<div class="item" data-value="0">Seleccionar</div>';
-      $.each(response, function (r) {
-        rol_select = '<div class="item" data-value="'+response[r].id+'">'+response[r].name+'</div>';
-        $('#selectRole').append(rol_select);
-      });
-    }
-  });
-}
+
+});
