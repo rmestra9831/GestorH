@@ -194,7 +194,7 @@ $('#saveSchedule').click(function (e) {
         $.alert({
           theme: 'Modern',
           icon: 'lh exclamation triangle icon',
-          title: 'Falta Aglo',
+          title: 'Falta Algo',
           type: 'red',
           content: 'Revisa los datos del horario',
           typeAnimated: true

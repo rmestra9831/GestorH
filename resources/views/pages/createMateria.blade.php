@@ -23,7 +23,7 @@
                     <input type="text" name="nameMateria" class="form-control col-md-5 text-capitalize" placeholder="{{ __('ingresa el nombre de la materia') }}"  required><button type="button" class="btn btn-info ml-2 saveMateria">Guardar</button>
                   </div>
                   <div class="selectColor container-fluid">
-                    <p class="card-category text-center">Selecciona el color que desas asignarle a la materia</p>
+                    <p class="card-category text-center">Selecciona el color que deseas asignarle a la materia</p>
                     <div class="row justify-content-center m-auto col-md-8">
                       <button color="secondary" class="ui inverted secondary button"><span class="material-icons">donut_large</span></button>
                       <button color="red" class="ui inverted red button"><span class="material-icons">donut_large</span></button>
@@ -52,8 +52,8 @@
       <div class="col-md-12">
           <div class="card">
             <div class="card-header card-header-info">
-              <h4 class="card-title text-center">Usuarios</h4>
-              <p class="card-category text-center">Aquí puedes editar los usuarios</p>
+              <h4 class="card-title text-center">Materias</h4>
+              <p class="card-category text-center">Aquí puedes editar y previsualizar las materias</p>
             </div>
             <div class="card-body">
               <div class="row">
@@ -67,13 +67,6 @@
                       <th class="text-right">Acciones</th>
                     </tr>
                   </thead>
-                  <tfoot class="ttt">
-                    <tr>
-                      <th>Nombre</th>
-                      <th>color</th>
-                      <th class="text-right">Acciones</th>
-                    </tr>
-                  </tfoot>
                 </table>
               </div>
             </div>

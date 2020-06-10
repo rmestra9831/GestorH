@@ -29,8 +29,9 @@ class PermissionsSeeder extends Seeder
         
         $permission = Permission::create(['name' => 'schedules']);
 
+
         $admin = Role::create(['name' => 'Administrador']);
-        $admin->givePermissionTo(['create user','schedules','create schedule','create materia','edit schedule','permissions']);
+        $admin->givePermissionTo(['create user','schedules','create schedule','create materia','edit schedule','permissions','delete schedule']);
         $user = User::where('id',1)->firstOrFail();
         $user->assignRole('Administrador');
         $user->givePermissionTo(['edit user','assign permissions']);
