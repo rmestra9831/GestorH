@@ -11,11 +11,21 @@
         </div>
         {{-- primer input --}}
         <div class="card-body ">
-          <div class="bmd-form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-            <div class="input-group">
+          <div class="bmd-form-group{{ $errors->has('name') ? ' has-danger' : '' }} d-flex">
+            {{-- nombre quein lo crea --}}
+            <div class="input-group col-md-6">
               <div class="input-group-prepend">
                 <span class="input-group-text">
                     <i class="material-icons">face</i>
+                </span>
+              </div>
+              <input readonly="" type="text" name="createBy" class="form-control" slug="{{ auth()->user()->slug }}" value="{{ auth()->user()->name }}" placeholder="{{ __('Nombre de Horario') }}" value="{{ auth()->user()->name }}" required>
+            </div>
+            {{-- nombre de horario --}}
+            <div class="input-group col-md-6">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <i class="material-icons">chrome_reader_mode</i>
                 </span>
               </div>
               <input type="text" name="nameSchedule" class="form-control" placeholder="{{ __('Nombre de Horario') }}"  required>
@@ -41,13 +51,7 @@
             <div class="list col-md-8" id="lista">
               @foreach ($materias as $materia)
                 <button class="ui list-item item {{ $materia->color }} button text-capitalize" data-id="{{ $materia->name }}">{{ $materia->name }} <span class="material-icons removeItemList">clear</span></button>
-              @endforeach
-              {{-- <button class="ui list-item item red button">Red <span class="material-icons removeItemList">clear</span></button> --}}
-              {{-- <button class="ui list-item item orange button">Orange <span class="material-icons removeItemList">clear</span></button> --}}
-              {{-- <button class="ui list-item item yellow button">Yellow <span class="material-icons removeItemList">clear</span></button> --}}
-              {{-- <button class="ui list-item item olive button">Olive <span class="material-icons removeItemList">clear</span></button> --}}
-              {{-- <button class="ui list-item item green button">Green <span class="material-icons removeItemList">clear</span></button> --}}
-              
+              @endforeach              
             </div>
           </div>
           {{-- horarios --}}
@@ -55,37 +59,39 @@
             <div class="card-day hour">
               <p>Hora</p>
               <div class="day wide column">
-                <div class="list-item item-hour">11am</div>
-                <div class="list-item item-hour">10am</div>
-                <div class="list-item item-hour">9am</div>
-                <div class="list-item item-hour">8am</div>
-                <div class="list-item item-hour">7am</div>
                 <div class="list-item item-hour">6am</div>
+                <div class="list-item item-hour">7am</div>
+                <div class="list-item item-hour">8am</div>
+                <div class="list-item item-hour">9am</div>
+                <div class="list-item item-hour">10am</div>
+                <div class="list-item item-hour">11am</div>
               </div>
             </div>
             <div class="card-day">
               <p>Lunes</p>
-              <div class="day wide column" id="day1"><div class="list-item break">Descanso</div></div>
+              <div class="day wide column" id="day1"><div class="list-item break" data-id="descanso">Descanso</div></div>
             </div>
             <div class="card-day">
               <p>Martes</p>
-              <div class="day wide column" id="day2"><div class="list-item break">Descanso</div></div>
+              <div class="day wide column" id="day2"><div class="list-item break" data-id="descanso">Descanso</div></div>
             </div>
             <div class="card-day">
               <p>Miercoles</p>
-              <div class="day wide column" id="day3"><div class="list-item break">Descanso</div></div>
+              <div class="day wide column" id="day3"><div class="list-item break" data-id="descanso">Descanso</div></div>
             </div>
             <div class="card-day">
               <p>Jueves</p>
-              <div class="day wide column" id="day4"><div class="list-item break">Descanso</div></div>
+              <div class="day wide column" id="day4"><div class="list-item break" data-id="descanso">Descanso</div></div>
             </div>
             <div class="card-day">
               <p>Viernes</p>
-              <div class="day wide column" id="day5"><div class="list-item break">Descanso</div></div>
+              <div class="day wide column" id="day5"><div class="list-item break" data-id="descanso">Descanso</div></div>
             </div>
 
           </div>
-          <button id="saveSchedule">Guardar</button>
+          <div class="justify-content-center d-flex">
+            <button id="saveSchedule" class="ui inverted primary button w-75">Guardar</button>
+          </div>
         </div>
       </div>
     </div>

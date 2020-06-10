@@ -17,6 +17,7 @@ class CreateMateriasTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('color');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

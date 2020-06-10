@@ -120,9 +120,8 @@ if (window.location.pathname == '/schedule/new') {
     animation: 150,
     store: {
       set: function set(sortable) {
-        orden = sortable.toArray(); // array.push[orden];
-
-        console.log(orden);
+        var lu = sortable.toArray();
+        localStorage.setItem('lu', lu.join(','));
       }
     },
     onAdd: function onAdd(evt) {
@@ -149,6 +148,12 @@ if (window.location.pathname == '/schedule/new') {
     filter: '.break',
     dragClass: 'drag',
     animation: 150,
+    store: {
+      set: function set(sortable) {
+        var ma = sortable.toArray();
+        localStorage.setItem('ma', ma.join(','));
+      }
+    },
     onAdd: function onAdd(evt) {
       var day2 = document.querySelectorAll('#day2 .list-item');
 
@@ -173,6 +178,12 @@ if (window.location.pathname == '/schedule/new') {
     filter: '.break',
     dragClass: 'drag',
     animation: 150,
+    store: {
+      set: function set(sortable) {
+        var mi = sortable.toArray();
+        localStorage.setItem('mi', mi.join(','));
+      }
+    },
     onAdd: function onAdd(evt) {
       var day3 = document.querySelectorAll('#day3 .list-item');
 
@@ -197,6 +208,12 @@ if (window.location.pathname == '/schedule/new') {
     filter: '.break',
     dragClass: 'drag',
     animation: 150,
+    store: {
+      set: function set(sortable) {
+        var ju = sortable.toArray();
+        localStorage.setItem('ju', ju.join(','));
+      }
+    },
     onAdd: function onAdd(evt) {
       var day4 = document.querySelectorAll('#day4 .list-item');
 
@@ -221,6 +238,12 @@ if (window.location.pathname == '/schedule/new') {
     filter: '.break',
     dragClass: 'drag',
     animation: 150,
+    store: {
+      set: function set(sortable) {
+        var vi = sortable.toArray();
+        localStorage.setItem('vi', vi.join(','));
+      }
+    },
     onAdd: function onAdd(evt) {
       var day5 = document.querySelectorAll('#day5 .list-item');
 
@@ -244,14 +267,61 @@ if (window.location.pathname == '/schedule/new') {
   }); // <!-- BOTON GUARDAR HORARIO -->
 
   $('#saveSchedule').click(function (e) {
-    Sortable.create(dia1, {
-      store: {
-        set: function set(sortable) {
-          x1 = orden = sortable.toArray();
-          console.log(x1);
-        }
+    var lu = localStorage.getItem('lu') ? localStorage.getItem('lu').split(",") : [];
+    var ma = localStorage.getItem('ma') ? localStorage.getItem('ma').split(",") : [];
+    var mi = localStorage.getItem('mi') ? localStorage.getItem('mi').split(",") : [];
+    var ju = localStorage.getItem('ju') ? localStorage.getItem('ju').split(",") : [];
+    var vi = localStorage.getItem('vi') ? localStorage.getItem('vi').split(",") : [];
+    var createBy = $('input[name="createBy"]').attr('slug');
+    var nameSchedule = $('input[name="nameSchedule"]').val(); // && (lu.length != 6 || ma.length != 6 || mi.length != 6 || ju.length != 6 || vi.length != 6)
+
+    if (lu.length == 0 || ma.length == 0 || mi.length == 0 || ju.length == 0 || vi.length == 0 && lu.length != 6 || ma.length != 6 || mi.length != 6 || ju.length != 6 || vi.length != 6) {
+      $.alert({
+        theme: 'Modern',
+        icon: 'lh exclamation triangle icon',
+        title: 'Aguantate',
+        type: 'red',
+        content: 'Falta completar los horarios',
+        typeAnimated: true
+      });
+    } else {
+      if (!createBy || !nameSchedule) {
+        $.alert({
+          theme: 'Modern',
+          icon: 'lh exclamation triangle icon',
+          title: 'Falta Aglo',
+          type: 'red',
+          content: 'Revisa los datos del horario',
+          typeAnimated: true
+        });
+      } else {
+        $.post("/schedule/ScheduleStore", {
+          "data": {
+            "creador": createBy,
+            "nombreHorario": nameSchedule,
+            "lunes": lu,
+            "martes": ma,
+            "miercoles": mi,
+            "jueves": ju,
+            "viernes": vi
+          },
+          "success": true,
+          "error": true
+        }, function (data, textStatus, jqXHR) {
+          $('input[name="nameSchedule"]').val('');
+          $('.card-day button').remove();
+          swal({
+            title: "Horario Creado",
+            text: "Horario registrado correctamente",
+            type: "success",
+            buttonsStyling: true,
+            confirmButtonClass: "btn btn-success"
+          });
+          console.log(data);
+          localStorage.clear();
+        });
       }
-    });
+    }
   });
 } //aqui termina
 

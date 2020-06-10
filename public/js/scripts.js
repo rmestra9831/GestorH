@@ -94,7 +94,11 @@
 /***/ (function(module, exports) {
 
 // <!-- dropdown-->
-$('.ui.dropdown').dropdown(); //  <!-- REGISTRO DE USUARIOS  -->
+$('.ui.dropdown').dropdown(); // <!-- MODALS-->
+
+$('.test.modal').modal({
+  inverted: true
+}).modal('attach events', '.test.button', 'show'); //  <!-- REGISTRO DE USUARIOS  -->
 
 if (window.location.pathname == '/register') {
   $.ajax({
@@ -189,16 +193,16 @@ $(document).ready(function () {
               typeAnimated: true
             });
           } else {
-            $.alert({
-              theme: 'Modern',
-              icon: 'lh exclamation triangle icon',
-              title: '! Listo ¡',
-              type: 'blue',
-              content: 'Se creó la materia correctamente',
-              typeAnimated: true
+            swal({
+              title: "Materia Creada",
+              text: "Se ha creado de manera existosa",
+              type: "success",
+              buttonsStyling: true,
+              confirmButtonClass: "btn btn-success"
             });
+            $('#tableMaterias').DataTable().ajax.reload();
             $(btnsColor).removeClass('active');
-            $('input[name="nameMateria"]').value = "";
+            $('input[name="nameMateria"]').val('');
           }
 
           ;

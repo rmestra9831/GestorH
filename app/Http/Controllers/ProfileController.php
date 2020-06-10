@@ -12,7 +12,7 @@ use App\User;
 class ProfileController extends Controller
 {
     public function __construct(){
-        $this->middleware(['auth','can:create user']);
+        // $this->middleware(['auth','can:create user']);
     }
     /**
      * Show the form for editing the profile.

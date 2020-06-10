@@ -13,6 +13,7 @@
             </div>
             <div class="card-body ">
                 <div class="bmd-form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                  {{-- input de nombre de hroario --}}
                   <div class="input-group justify-content-center">
                     <div class="input-group-prepend">
                       <span class="input-group-text">

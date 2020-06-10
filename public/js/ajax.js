@@ -102271,15 +102271,14 @@ var tableMateria = $('#tableMaterias').DataTable({
             aceptar: function aceptar() {
               $.ajax({
                 type: "delete",
-                url: "/materia/" + valor + "/delete",
+                url: "/schedule/materia/" + valor + "/delete",
                 success: function success(response) {
-                  console.log(response);
                   $('#tableMaterias').DataTable().ajax.reload();
                 },
                 complete: function complete() {
                   swal({
-                    title: "Usuario eliminado",
-                    text: "No veraz más este Usuario en la lista",
+                    title: "Materia eliminada",
+                    text: "No veraz más esta materia en la lista",
                     type: "success",
                     buttonsStyling: true,
                     confirmButtonClass: "btn btn-success"
@@ -102304,6 +102303,82 @@ var tableMateria = $('#tableMaterias').DataTable({
     className: "text-capitalize h4"
   }, {
     data: 'color'
+  }, {
+    data: 'actions',
+    className: "td-actions text-center"
+  }],
+  "language": configLanguageDatatable
+}); // <!-- """"""""""""""""""""""""""""""""""""""""""""" TABLAS DE HORARIOS """""""""""""""""""""""""""""""""""""""""""""""""" -->
+
+var tableSchedule = $('#tableSchedule').DataTable({
+  "deferRender": true,
+  "serverSide": false,
+  "scroller": false,
+  "scrollX": false,
+  "ajax": {
+    "type": "GET",
+    "url": "/schedule/getSchedule",
+    "complete": function complete() {
+      //IMPRIMIENDO BOTONES
+      // Event listener to the two range filtering inputs to redraw on input
+      $('#min').focusout(function () {
+        tableSchedule.draw();
+      });
+      $('#max').focusout(function () {
+        tableSchedule.draw();
+      }); //SCRIPT PARA EL FORMULARIO DE DELETE FINDING
+
+      var btnsDeleteMateria = document.querySelectorAll('#btnDeleteMateria');
+      $(btnsDeleteMateria).click(function () {
+        valor = $(this).attr('ident');
+        name = $(this).attr('nam');
+        $.confirm({
+          //aqui va el alerta personalizado
+          animation: 'scale',
+          closeAnimation: 'scale',
+          theme: 'modern',
+          icon: 'lh exclamation triangle icon',
+          backgroundDismissAnimation: 'glow',
+          title: 'Espera ahí!',
+          content: 'Esta seguro que desea <strong>ELIMINAR</strong> ? <strong>' + name + '</strong> Una vez eliminado no podras buscarlo por este medio',
+          type: 'orange',
+          buttons: {
+            aceptar: function aceptar() {
+              $.ajax({
+                type: "delete",
+                url: "/schedule/materia/" + valor + "/delete",
+                success: function success(response) {
+                  $('#tableMaterias').DataTable().ajax.reload();
+                },
+                complete: function complete() {
+                  swal({
+                    title: "Materia eliminada",
+                    text: "No veraz más esta materia en la lista",
+                    type: "success",
+                    buttonsStyling: true,
+                    confirmButtonClass: "btn btn-success"
+                  });
+                },
+                error: function error() {}
+              });
+            },
+            cancel: function cancel() {}
+          }
+        });
+      });
+    },
+    beforeSend: function beforeSend() {
+      $('#rangestart').remove();
+      $('#rangeend').remove();
+    }
+  },
+  //traigo los usuarios para mirar sus permisos
+  "columns": [{
+    data: 'name',
+    className: "text-capitalize h4"
+  }, {
+    data: 'nameSchedule',
+    className: "text-capitalize h4"
   }, {
     data: 'actions',
     className: "td-actions text-center"

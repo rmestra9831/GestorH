@@ -42,7 +42,7 @@ class PermissionsSeeder extends Seeder
 
 
         $student = Role::create(['name' => 'Estudiante']);
-        $student->givePermissionTo('');
+        $student->givePermissionTo('schedules');
         $user = User::where('id',3)->firstOrFail();
         $user->assignRole('Estudiante');
 

@@ -27,10 +27,10 @@
               <b class="caret"></b>
             </p>
           </a>
-          <div class="collapse {{ ($activePage ==   'newSchedule' || $activePage == 'newMateria') ? ' show' : '' }}" id="schedule">
+          <div class="collapse {{ ($activePage ==   'newSchedule' || $activePage == 'newMateria' || $activePage == 'listSchedule') ? ' show' : '' }}" id="schedule">
             <ul class="nav">
-              <li class="nav-item{{ $activePage == 'permissionsUser' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('permissionsUser.view') }}">
+              <li class="nav-item{{ $activePage == 'listSchedule' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('schedule.view') }}">
                   <span class="sidebar-mini"> LT </span>
                   <span class="sidebar-normal MichromaRegular">{{ __('lista') }} </span>
                 </a> 
@@ -124,7 +124,8 @@
       {{-- pie de pagina --}}
       <li class="nav-item active-pro bg-info">
         <div class="nav-link text-white">
-          <p class="MichromaRegular text-center">@role('Administrador') Administrador @else @if('Docente') Docente @else Estudiante @endrole @endrole</p>
+          <p class="MichromaRegular text-center">
+            @role('Administrador') Administrador @else @role('Docente') Docente @else Estudiante @endrole @endrole</p>
         </div>
       </li>
     </ul>
